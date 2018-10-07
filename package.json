@@ -4,6 +4,7 @@
     "description": "A thin cli wrapper around identicon, jdenticon, and other identicon-generating tools.",
     "main": "genident.js",
     "dependencies": {
+        "args": "*",
         "identicon": "*",
         "jdenticon": "*"
     },

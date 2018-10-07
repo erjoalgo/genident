@@ -4,60 +4,40 @@ const fs = require('fs');
 const path = require('path');
 const minimist = require('minimist');
 
-var ARGV_START = 2;
 
-let args = minimist(process.argv.slice(2), {
-    alias: {
-      h: 'help',
-      t: "text",
-      s: "size",
-      o: "output",
-      f: "identfun",
-        // v: 'version'
-    },
-  default: {
-    size: 150,
-    identfun: "identicon_gen"
-  }
-});
+const args = require('args');
 
-var text, size, output_sans_ext, identfun;
 
 var IDENT_FUNS = [["identicon_gen", identicon_gen],
                   ["jdenticon_gen", jdenticon_gen]];
-
-function usage (  ) {
-  console.log( "args: " );
-  for (var k in args) {
-    console.log( k+": "+args[k] );
-  }
-  console.log( "" );
-
-  console.log( "usage: genident.js [-h] -t text [-s size] [-f output]" );
-  // TODO package...
-  console.log( "" );
-  console.log( "$ npm install -g minimist identicon jdenticon" );
-  console.log( "$ apt-get install libcairo2-dev libjpeg8-dev "+
-               "libpango1.0-dev libgif-dev build-essential g++" );
+function nth ( n ) {
+    return function(arr){return arr[n];};
 }
 
+const first = function(arr){return arr[0];}
+const flags = args
+      .option('text', "The text to encode")
+      .option('size', "Size of the image", 150)
+      .option('identfun', "Function to use from "+
+              IDENT_FUNS.map(nth(0)).join(","),
+              IDENT_FUNS[0][0])
+      .option('output', 'Output filename without extension. Defaults to TEXT. ')
+      .parse(process.argv);
 
-if (args.help) {
-  usage();
-  process.exit(0);
-} else if (args.text == null) {
-  usage();
+
+
+if (flags.text == null) {
   throw "must provide text to encode";
 } else  {
-  var fun_idx = IDENT_FUNS.map(function(name_fun){return name_fun[0];}).indexOf(args.identfun);
+    var fun_idx = IDENT_FUNS.map(nth(0)).
+        indexOf(flags.identfun);
   if (fun_idx == -1) {
-    usage();
-    throw "unknown ident function: "+args.identfun
+    throw "unknown ident function: "+flags.identfun
   } else  {
     identfun = IDENT_FUNS[fun_idx][1];
-    text = args.text;
-    size = parseInt(args.size);
-    output_sans_ext = args.output || text;
+    text = flags.text;
+    size = parseInt(flags.size);
+    output_sans_ext = flags.output || text;
   }
 }
 
