@@ -1,6 +1,6 @@
 {
     "name": "genident",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A thin cli wrapper around identicon, jdenticon, and other identicon-generating tools.",
     "main": "genident.js",
     "dependencies": {
@@ -16,7 +16,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "/home/ealfonso/git/genident"
+        "url": "https://github.com/erjoalgo/genident"
     },
     "keywords": [
         "identicon",
