@@ -26,17 +26,17 @@ const flags = args
 
 
 
-if (flags.text == null) {
+if (!flags.text) {
   throw "must provide text to encode";
 } else  {
   var fun_idx = IDENT_FUNS.map(nth(0)).
       indexOf(flags.identfun);
   if (fun_idx == -1) {
-    throw "unknown ident function: "+flags.identfun
+    throw "unknown ident function: "+flags.identfun;
   } else  {
     identfun = IDENT_FUNS[fun_idx][1];
     text = flags.text;
-    size = parseInt(flags.size);
+    size = parseInt(flags.size, 10);
     output_sans_ext = flags.output || text;
 
     var output_filename = identfun(text, size, output_sans_ext);
