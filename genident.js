@@ -55,11 +55,6 @@ function jdenticon ( val, size, output_filename_sans_ext ) {
 
 function identicon ( val, size, output_filename_sans_ext ) {
   var _identicon = require('identicon');
-  // Asynchronous API
-  // apt-get install libcairo2-dev libjpeg8-dev libpango1.0-dev libgif-dev build-essential g++
-  // fix libpng-12 issue:
-  // wget -q -O /tmp/libpng12.deb http://mirrors.kernel.org/ubuntu/pool/main/libp/libpng/libpng12-0_1.2.54-1ubuntu1_amd64.deb   && sudo dpkg -i /tmp/libpng12.deb   && rm /tmp/libpng12.deb
-
   // Synchronous API
   var output_filename = output_filename_sans_ext+".png";
   var buffer = _identicon.generateSync({ id: val, size: size});
