@@ -1,0 +1,27 @@
+{
+    "name": "genident",
+    "version": "1.0.0",
+    "description": "A thin cli wrapper around identicon, jdenticon, and other identicon-generating tools.",
+    "main": "genident.js",
+    "dependencies": {
+        "identicon": "*",
+        "jdenticon": "*"
+    },
+    "bin" : {
+        "genident" : "./genident.js"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "/home/ealfonso/git/genident"
+    },
+    "keywords": [
+        "identicon",
+        "jdenticon",
+        "command-line"
+    ],
+    "author": "Ernesto Alfonso",
+    "license": "ISC"
+}
