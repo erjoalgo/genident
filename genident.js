@@ -48,7 +48,6 @@ if (flags.text == null) {
 function jdenticon ( val, size, output_filename_sans_ext ) {
   var _jdenticon = require("jdenticon");
   var output_filename = output_filename_sans_ext+".png";
-  size = 200;
   var png = _jdenticon.toPng(val, size);
   fs.writeFileSync(output_filename, png);
   return output_filename;
