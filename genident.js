@@ -11,7 +11,7 @@ var IDENT_FUNS = [["identicon", identicon],
                   ["jdenticon", jdenticon]];
 
 function nth ( n ) {
-    return function(arr){return arr[n];};
+  return function(arr){return arr[n];};
 }
 
 const first = function(arr){return arr[0];}
@@ -29,8 +29,8 @@ const flags = args
 if (flags.text == null) {
   throw "must provide text to encode";
 } else  {
-    var fun_idx = IDENT_FUNS.map(nth(0)).
-        indexOf(flags.identfun);
+  var fun_idx = IDENT_FUNS.map(nth(0)).
+      indexOf(flags.identfun);
   if (fun_idx == -1) {
     throw "unknown ident function: "+flags.identfun
   } else  {
@@ -69,4 +69,5 @@ function identicon ( val, size, output_filename_sans_ext ) {
 
 // Local Variables:
 // compile-command: "./genident.js ejalfonso 500"
+// js-indent-level: 2
 // End:
