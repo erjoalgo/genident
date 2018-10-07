@@ -8,8 +8,8 @@
         "identicon": "*",
         "jdenticon": "*"
     },
-    "bin" : {
-        "genident" : "./genident.js"
+    "bin": {
+        "genident": "./genident.js"
     },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
