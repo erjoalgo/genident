@@ -38,6 +38,9 @@ if (flags.text == null) {
     text = flags.text;
     size = parseInt(flags.size);
     output_sans_ext = flags.output || text;
+
+    var output_filename = identfun(text, size, output_sans_ext);
+    console.log( "wrote to "+output_filename);
   }
 }
 
@@ -68,10 +71,6 @@ function identicon ( val, size, output_filename_sans_ext ) {
   fs.writeFileSync(output_filename, buffer);
   return output_filename;
 }
-
-
-var output_filename = identfun(text, size, output_sans_ext);
-console.log( "wrote to "+output_filename);
 
 // Local Variables:
 // compile-command: "./genident.js ejalfonso 500"
