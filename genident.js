@@ -7,9 +7,9 @@ const minimist = require('minimist');
 
 const args = require('args');
 
+var IDENT_FUNS = [["identicon", identicon],
+                  ["jdenticon", jdenticon]];
 
-var IDENT_FUNS = [["identicon_gen", identicon_gen],
-                  ["jdenticon_gen", jdenticon_gen]];
 function nth ( n ) {
     return function(arr){return arr[n];};
 }
@@ -42,17 +42,17 @@ if (flags.text == null) {
 }
 
 
-function jdenticon_gen ( val, size, output_filename_sans_ext ) {
-  var jdenticon = require("jdenticon");
+function jdenticon ( val, size, output_filename_sans_ext ) {
+  var _jdenticon = require("jdenticon");
   var output_filename = output_filename_sans_ext+".png";
   size = 200;
-  var png = jdenticon.toPng(val, size);
+  var png = _jdenticon.toPng(val, size);
   fs.writeFileSync(output_filename, png);
   return output_filename;
 }
 
-function identicon_gen ( val, size, output_filename_sans_ext ) {
-  var identicon = require('identicon');
+function identicon ( val, size, output_filename_sans_ext ) {
+  var _identicon = require('identicon');
   // Asynchronous API
 
   // npm install -g minimist identicon jdenticon
@@ -64,7 +64,7 @@ function identicon_gen ( val, size, output_filename_sans_ext ) {
 
   // Synchronous API
   var output_filename = output_filename_sans_ext+".png";
-  var buffer = identicon.generateSync({ id: val, size: size});
+  var buffer = _identicon.generateSync({ id: val, size: size});
   fs.writeFileSync(output_filename, buffer);
   return output_filename;
 }
